@@ -21,7 +21,7 @@
         </nav>
     </header>
 
-    <section id="about">
+    <section id="about" class="container">
         <h2><i class="fa-regular fa-address-card"></i> About Me</h2>
         <p>
             Certified MERN Stack Developer with a strong foundation in front-end and back-end web development.
@@ -30,7 +30,7 @@
         </p>
     </section>
 
-    <section id="skills">
+    <section id="skills" class="container">
         
         <h2><i class="fa-solid fa-code"></i> Skills</h2>
         <div class="skills-container">
@@ -65,7 +65,7 @@
 
         </div>
     </section>
-    <section id="tools">
+    <section id="tools" class="container">
         <h2><i class="fa-solid fa-tools"></i> Tools</h2>
         <div class="tools-container">
             <div>
@@ -84,7 +84,7 @@
     </section>
     
 
-    <section id="education">
+    <section id="education" class="container">
         <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
         <div class="education-container">
             <div class="education-card">
@@ -98,7 +98,7 @@
         </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="container">
         <h2><i class="fa-solid fa-folder-open"></i> Projects</h2>
         <div class="projects-container">
             <div>
@@ -112,7 +112,7 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="container">
         <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
         <p>Email: <a href="mailto:athisraja45@gmail.com">athisraja45@gmail.com</a></p>
         <p>Phone: 9080329671</p>
@@ -122,5 +122,31 @@
     <footer>
         <p>&copy; 2024 Athistaraja R. All Rights Reserved.</p>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // Add 'show' class when the element enters the viewport
+                            entry.target.classList.add("show");
+                            entry.target.classList.remove("exit");
+                        } else {
+                            // Add 'exit' class when the element leaves the viewport
+                            entry.target.classList.remove("show");
+                            entry.target.classList.add("exit");
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1, // Trigger when 10% of the element is visible
+                }
+            );
+    
+            // Observe all containers
+            const containers = document.querySelectorAll(".container");
+            containers.forEach((container) => observer.observe(container));
+        });
+    </script>
 </body>
 </html>
